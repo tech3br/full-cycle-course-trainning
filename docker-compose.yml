@@ -13,23 +13,22 @@ services:
     ports:
       - 3000:3000
   db:
-    image: mysql:8
+    image: mysql:5.7.22
     container_name: db
     restart: always
-    command: ["--innodb-use-native-aio=0"]
+    command: --innodb-use-native-aio=0
     tty: true
     volumes:
     - ./mysql:/var/lib/mysql
     environment:
+    - MYSQL_ROOT_PASSWORD=root
     - MYSQL_DATABASE=nodedb
-    - MYSQL_USER=testedb
-    - MYSQL_PASSWORD=testedb
     networks:
       - node-network
     ports:
-      - 3306:3306
+      - "3306"
     
 
 networks:
-  node-network:
+ node-network:
     driver: bridge
