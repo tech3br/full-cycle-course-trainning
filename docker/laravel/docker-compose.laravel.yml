@@ -1,15 +1,15 @@
-version: '3'
+version: "3"
 
 services:
-  laravel: 
+  laravel:
     build:
-      context: ./laravel
+      context: .
       dockerfile: Dockerfile.prod
     image: tech3br/laravel:prod
     container_name: laravel
     networks:
       - laranet
-  nginx:   
+  nginx:
     build:
       context: ./nginx
       dockerfile: Dockerfile.prod
@@ -17,9 +17,10 @@ services:
     container_name: nginx
     networks:
       - laranet
-    ports:    
+    ports:
       - "8080:80"
 
 networks:
   laranet:
     driver: bridge
+
